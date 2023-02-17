@@ -1,0 +1,28 @@
+---
+compiled_package_info:
+  package_name: my_todo_list
+  address_alias_instantiation:
+    Extensions: "0000000000000000000000000000000000000000000000000000000000000001"
+    aptos_framework: "0000000000000000000000000000000000000000000000000000000000000001"
+    aptos_std: "0000000000000000000000000000000000000000000000000000000000000001"
+    aptos_token: "0000000000000000000000000000000000000000000000000000000000000003"
+    core_resources: 000000000000000000000000000000000000000000000000000000000a550c18
+    std: "0000000000000000000000000000000000000000000000000000000000000001"
+    todolist_addr: 86d53202b18d083a845839e65cda90722437f9ee3a1813b107debfb4b3cb24fb
+    vm_reserved: "0000000000000000000000000000000000000000000000000000000000000000"
+  source_digest: 30666DFCC0021E24CB60071922958416D1E1D0327BDACB7E783F91A53E3682B6
+  build_flags:
+    dev_mode: false
+    test_mode: false
+    generate_docs: false
+    generate_abis: false
+    install_dir: ~
+    force_recompilation: false
+    additional_named_addresses: {}
+    architecture: ~
+    fetch_deps_only: false
+    skip_fetch_latest_git_deps: false
+dependencies:
+  - AptosFramework
+  - AptosStdlib
+  - MoveStdlib
