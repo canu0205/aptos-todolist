@@ -6,10 +6,10 @@ import { AptosClient } from "aptos";
 import { useWallet } from "@aptos-labs/wallet-adapter-react";
 import { CheckboxChangeEvent } from "antd/es/checkbox";
 
-export const NODE_URL = "https://fullnode.devnet.aptoslabs.com";
+export const NODE_URL = "https://fullnode.testnet.aptoslabs.com";
 export const client = new AptosClient(NODE_URL);
 export const moduleAddress =
-  "0x86d53202b18d083a845839e65cda90722437f9ee3a1813b107debfb4b3cb24fb";
+  "0xfe44332e35594092d874f1f64ae262793779def3903f865246115fd250474285";
 
 type Task = {
   address: string;
@@ -103,7 +103,7 @@ function App() {
         task_id: latestId + "",
       };
       let newTasks = [...tasks];
-      newTasks.unshift(newTaskToPush);
+      newTasks.push(newTaskToPush);
       setTasks(newTasks);
       setNewTask("");
     } catch (error: any) {
@@ -156,9 +156,9 @@ function App() {
       <Layout>
         <Row align="middle">
           <Col span={10} offset={2}>
-            <h1>Our todo list</h1>
+            <h1>My Todo List</h1>
           </Col>
-          <Col span={12} style={{ textAlign: "right", paddingRight: "200px" }}>
+          <Col span={12} style={{ textAlign: "right" }}>
             <WalletSelector />
           </Col>
         </Row>
@@ -180,25 +180,27 @@ function App() {
           </Row>
         ) : (
           <Row gutter={[0, 32]} style={{ marginTop: "2rem" }}>
-            <Col span={8} offset={8}>
-              <Input.Group compact>
-                <Input
-                  onChange={(event) => onWriteTask(event)}
-                  style={{ width: "calc(100% - 60px)" }}
-                  placeholder="Add a Task"
-                  size="large"
-                  value={newTask}
-                />
-              </Input.Group>
+            <Col span={18} offset={3}>
+              <Input
+                onChange={(event) => onWriteTask(event)}
+                style={{ width: "calc(100% - 60px)" }}
+                placeholder="Add a Task"
+                size="large"
+                value={newTask}
+              />
               <Button
                 onClick={onTaskAdded}
                 type="primary"
-                style={{ height: "40px", backgroundColor: "3f67ff" }}
+                style={{
+                  marginLeft: "2px",
+                  height: "40px",
+                  backgroundColor: "3f67ff",
+                }}
               >
                 Add
               </Button>
             </Col>
-            <Col span={8} offset={8}>
+            <Col span={18} offset={3}>
               {tasks && (
                 <List
                   size="small"
@@ -206,13 +208,13 @@ function App() {
                   dataSource={tasks}
                   renderItem={(task: any) => (
                     <List.Item
+                      // extra={[<a>delete</a>]}
                       actions={[
                         <div>
                           {task.completed ? (
                             <Checkbox defaultChecked={true} disabled />
                           ) : (
                             <Checkbox
-                              defaultChecked={false}
                               onChange={(event) =>
                                 onCheckboxChange(event, task.task_id)
                               }
@@ -222,7 +224,7 @@ function App() {
                       ]}
                     >
                       <List.Item.Meta
-                        title={task.content}
+                        title={`#${task.task_id}.${task.content}`}
                         description={
                           <a
                             href={`https://explorer.aptoslabs.com/account/${task.address}/`}

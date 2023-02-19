@@ -6,4 +6,4 @@ git = 'https://github.com/aptos-labs/aptos-core.git'
 rev = 'main'
 subdir = 'aptos-move/framework/aptos-framework'
 [addresses]
-todolist_addr='86d53202b18d083a845839e65cda90722437f9ee3a1813b107debfb4b3cb24fb'
+todolist_addr='fe44332e35594092d874f1f64ae262793779def3903f865246115fd250474285'
